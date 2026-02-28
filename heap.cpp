@@ -61,11 +61,10 @@ void Heap::push(int value){
 // (but does not return it), then ensures
 // the heap is correctly arranged
 void Heap::pop(){
-n = vdata.size();
+int n = vdata.size();
 if (n == 0) {
-  throw std::runtime_error("Heap is empty");
+   return;
     }
-int top=vdata[0];
 vdata[0]=vdata[n-1];
 vdata.pop_back();
 if(vdata.size()>0){
@@ -75,7 +74,7 @@ if(vdata.size()>0){
 // Returns the minimum element in the heap
 int Heap::top(){
   if (vdata.empty()) {
-        throw std::runtime_error("Heap is empty");
+        return;
     }
     return vdata[0];
 }
