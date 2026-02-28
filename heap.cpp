@@ -10,7 +10,7 @@ using std::cout;
 // Should run in O(n) time
 Heap::Heap(std::vector<int>::iterator start, std::vector<int>::iterator end){
 vdata.assign(start, end);
-n = static_cast<int>(vdata.size());
+n = vdata.size();
 for (int i = n / 2 - 1; i >= 0; --i) {
         siftDown(i);
     }
@@ -34,34 +34,50 @@ void Heap::siftDown(int i){
     }
 }
 }
-void Heap::siftUp(int i){
-  
-}
 
 // Pushes a value into the heap, then ensures
 // the heap is correctly arranged
 void Heap::push(int value){
-
+        vdata.push_back(value);
+        if(vdata.size()==1)
+                return;
+        int curr=vdata.size()-1;
+        int parent=(curr-1)/2;
+        while(curr > 0 && vdata[curr]<vdata[parent]){
+                std::swap(vdata[curr],vdata[parent]);
+                curr=parent;
+                parent=(curr-1)/2;
+        }
+                
+        
 }
 
 // Pops the minimum value off the heap
 // (but does not return it), then ensures
 // the heap is correctly arranged
 void Heap::pop(){
+n = vdata.size();
 if (n == 0) {
-        throw std::runtime_error("Heap is empty");
+  throw std::runtime_error("Heap is empty");
     }
 int top=vdata[0];
-  vdata[0]=vdata[n-1]
+vdata[0]=vdata[n-1]；
+vdata.pop_back();
+if(vdata.size()>0){
+  siftdown(0);
+return top;
 }
 
 // Returns the minimum element in the heap
 int Heap::top(){
-  return 0;
+  if (vdata.empty()) {
+        throw std::runtime_error("Heap is empty");
+    }
+    return vdata[0];
 }
 
 // Returns true if the heap is empty, false otherwise
 bool Heap::empty(){
-  return true;
+   return vdata.empty();
 }
     
