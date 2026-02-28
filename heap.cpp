@@ -1,5 +1,6 @@
 // heap.cpp
 // Diba Mirza
+// Xianze Gu: I learned how to construct a heap using heapify way, and its time complexcity is O(n).
 
 #include "heap.h"
 #include <iostream>
