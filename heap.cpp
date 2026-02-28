@@ -73,9 +73,6 @@ if(vdata.size()>0){
 }
 // Returns the minimum element in the heap
 int Heap::top(){
-  if (vdata.empty()) {
-        return;
-    }
     return vdata[0];
 }
 
