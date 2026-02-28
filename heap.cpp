@@ -11,17 +11,21 @@ using std::cout;
 // Should run in O(n) time
 Heap::Heap(std::vector<int>::iterator start, std::vector<int>::iterator end){
 vdata.assign(start, end);
-n = vdata.size();
+int n = vdata.size();
 for (int i = n / 2 - 1; i >= 0; --i) {
         siftDown(i);
     }
 }
 
 void Heap::siftDown(int i){
-   int left=2i+1;
- int right=2i+2;
- int smallest=i;
+   int left=2*i+1;
+   int right=2*i+2;
+   int smallest=i;
+   int n = vdata.size();
   while(true){
+   int left=2*i+1;
+   int right=2*i+2;
+   int smallest=i;
  if (left < n && vdata[left] < vdata[smallest])
         smallest = left;
  if (right < n && vdata[right] < vdata[smallest])
@@ -62,13 +66,12 @@ if (n == 0) {
   throw std::runtime_error("Heap is empty");
     }
 int top=vdata[0];
-vdata[0]=vdata[n-1]；
+vdata[0]=vdata[n-1];
 vdata.pop_back();
 if(vdata.size()>0){
-  siftdown(0);
-return top;
+  siftDown(0);
 }
-
+}
 // Returns the minimum element in the heap
 int Heap::top(){
   if (vdata.empty()) {
